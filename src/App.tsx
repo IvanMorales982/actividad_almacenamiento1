@@ -22,7 +22,7 @@ function App() {
   // Detectar sección activa y mostrar botón scroll to top
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['inicio', 'definicion', 'sintomas', 'causas', 'tips', 'experiencia'];
+      const sections = ['inicio', 'definición', 'sintomas', 'causas', 'tips', 'experiencia'];
       const scrollPosition = window.scrollY + 100;
 
       // Mostrar botón scroll to top
