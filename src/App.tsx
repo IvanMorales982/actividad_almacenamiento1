@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Smartphone, AlertTriangle, Heart, Brain, Shield, User, Home, BookOpen, Menu, X, ArrowUp, HardDrive, Disc, Usb, Save, SdCard, Database } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Smartphone, AlertTriangle, Heart, Brain, Shield, User, Home, BookOpen, Menu, X, ArrowUp, HardDrive, Disc, Usb, Save, Car as SdCard, Database } from 'lucide-react'mer-motion';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,7 +21,7 @@ function App() {
   // Detectar sección activa y mostrar botón scroll to top
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['inicio', 'nomofobia', 'definicion', 'sintomas', 'causas', 'tips', 'experiencia', 'almacenamiento', 'discos-duros', 'medios-opticos', 'almacenamiento-portatil'];
+      const sections = ['inicio', 'definición', 'sintomas', 'causas', 'tips', 'experiencia'];
       const scrollPosition = window.scrollY + 100;
 
       // Mostrar botón scroll to top
@@ -47,8 +46,11 @@ function App() {
 
   const navigationItems = [
     { id: 'inicio', label: 'Inicio', icon: Home },
-    { id: 'nomofobia', label: 'Nomofobia', icon: Smartphone },
-    { id: 'almacenamiento', label: 'Almacenamiento', icon: HardDrive },
+    { id: 'definicion', label: 'Definición', icon: BookOpen },
+    { id: 'sintomas', label: 'Síntomas', icon: AlertTriangle },
+    { id: 'causas', label: 'Causas', icon: Brain },
+    { id: 'tips', label: 'Tips', icon: Shield },
+    { id: 'experiencia', label: 'Experiencia', icon: User },
   ];
 
   return (
@@ -167,7 +169,7 @@ function App() {
             Explorando el miedo moderno a estar desconectado de nuestros dispositivos móviles
           </motion.p>
           <motion.button
-            onClick={() => scrollToSection('nomofobia')}
+            onClick={() => scrollToSection('definicion')}
             className="bg-gradient-to-r from-blue-600 to-teal-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -177,59 +179,6 @@ function App() {
           >
             Comenzar Exploración
           </motion.button>
-        </div>
-      </motion.section>
-
-      {/* Sección Principal Nomofobia */}
-      <motion.section 
-        id="nomofobia" 
-        className="py-16 px-6 bg-gradient-to-br from-blue-50 to-indigo-50"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center justify-center mb-6">
-              <Smartphone className="h-12 w-12 text-blue-600 mr-4" />
-              <h2 className="text-5xl font-bold text-gray-900">Nomofobia</h2>
-            </div>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Explorando el fenómeno psicológico del miedo a estar desconectado
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button
-                onClick={() => scrollToSection('definicion')}
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Definición
-              </button>
-              <button
-                onClick={() => scrollToSection('sintomas')}
-                className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
-              >
-                Síntomas
-              </button>
-              <button
-                onClick={() => scrollToSection('causas')}
-                className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
-              >
-                Causas
-              </button>
-              <button
-                onClick={() => scrollToSection('tips')}
-                className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
-              >
-                Tips
-              </button>
-            </div>
-          </motion.div>
         </div>
       </motion.section>
 
@@ -669,430 +618,7 @@ function App() {
         </div>
       </motion.section>
 
-      {/* Sección Principal Almacenamiento */}
-      <motion.section 
-        id="almacenamiento" 
-        className="py-16 px-6 bg-gradient-to-br from-gray-50 to-slate-50"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center justify-center mb-6">
-              <HardDrive className="h-12 w-12 text-gray-700 mr-4" />
-              <h2 className="text-5xl font-bold text-gray-900">Almacenamiento</h2>
-            </div>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Explorando los diferentes tipos de dispositivos de almacenamiento de datos
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button
-                onClick={() => scrollToSection('discos-duros')}
-                className="bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors"
-              >
-                Discos Duros
-              </button>
-              <button
-                onClick={() => scrollToSection('medios-opticos')}
-                className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors"
-              >
-                Medios Ópticos
-              </button>
-              <button
-                onClick={() => scrollToSection('almacenamiento-portatil')}
-                className="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors"
-              >
-                Almacenamiento Portátil
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Discos Duros y SSD */}
-      <motion.section 
-        id="discos-duros" 
-        className="py-16 px-6 bg-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Discos Duros y Almacenamiento Interno</h2>
-            <p className="text-xl text-gray-600 leading-relaxed">Dispositivos de almacenamiento permanente de alta capacidad</p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Disco Duro Tradicional */}
-            <motion.div 
-              className="bg-gradient-to-br from-gray-50 to-slate-50 p-8 rounded-2xl shadow-lg"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center mb-6">
-                <HardDrive className="h-8 w-8 text-gray-700 mr-3" />
-                <h3 className="text-2xl font-bold text-gray-900">Disco Duro (HDD)</h3>
-              </div>
-              <img
-                src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                alt="Disco duro interno"
-                className="w-full rounded-xl mb-6 shadow-md"
-              />
-              <div className="space-y-4">
-                <p className="text-gray-700 leading-relaxed">
-                  Los discos duros tradicionales utilizan discos magnéticos giratorios para almacenar datos. 
-                  Son la opción más económica para grandes capacidades de almacenamiento.
-                </p>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div className="bg-white p-3 rounded-lg">
-                    <strong className="text-green-600">Ventajas:</strong>
-                    <ul className="mt-1 text-gray-600">
-                      <li>• Gran capacidad</li>
-                      <li>• Precio económico</li>
-                      <li>• Durabilidad probada</li>
-                    </ul>
-                  </div>
-                  <div className="bg-white p-3 rounded-lg">
-                    <strong className="text-red-600">Desventajas:</strong>
-                    <ul className="mt-1 text-gray-600">
-                      <li>• Velocidad limitada</li>
-                      <li>• Ruido mecánico</li>
-                      <li>• Consumo energético</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* SSD */}
-            <motion.div 
-              className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-lg"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center mb-6">
-                <Database className="h-8 w-8 text-blue-700 mr-3" />
-                <h3 className="text-2xl font-bold text-gray-900">Unidad de Estado Sólido (SSD)</h3>
-              </div>
-              <img
-                src="https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                alt="SSD y componentes electrónicos"
-                className="w-full rounded-xl mb-6 shadow-md"
-              />
-              <div className="space-y-4">
-                <p className="text-gray-700 leading-relaxed">
-                  Las unidades de estado sólido utilizan memoria flash para almacenar datos, 
-                  ofreciendo velocidades superiores y mayor resistencia que los discos duros tradicionales.
-                </p>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div className="bg-white p-3 rounded-lg">
-                    <strong className="text-green-600">Ventajas:</strong>
-                    <ul className="mt-1 text-gray-600">
-                      <li>• Velocidad extrema</li>
-                      <li>• Sin ruido</li>
-                      <li>• Bajo consumo</li>
-                      <li>• Resistente a golpes</li>
-                    </ul>
-                  </div>
-                  <div className="bg-white p-3 rounded-lg">
-                    <strong className="text-red-600">Desventajas:</strong>
-                    <ul className="mt-1 text-gray-600">
-                      <li>• Precio elevado</li>
-                      <li>• Capacidad limitada</li>
-                      <li>• Vida útil limitada</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Medios Ópticos */}
-      <motion.section 
-        id="medios-opticos" 
-        className="py-16 px-6 bg-gradient-to-br from-indigo-50 to-purple-50"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Medios de Almacenamiento Óptico</h2>
-            <p className="text-xl text-gray-600 leading-relaxed">Tecnologías que utilizan luz láser para leer y escribir datos</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Disc,
-                title: "CD (Compact Disc)",
-                capacity: "700 MB",
-                description: "Primer formato óptico masivo, revolucionó la distribución de música y software.",
-                image: "https://images.pexels.com/photos/164743/pexels-photo-164743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                color: "from-yellow-500 to-orange-500",
-                features: ["Audio de alta calidad", "Datos digitales", "Larga duración", "Formato estándar"]
-              },
-              {
-                icon: Disc,
-                title: "DVD (Digital Versatile Disc)",
-                capacity: "4.7 GB - 17 GB",
-                description: "Evolución del CD con mayor capacidad, ideal para video y aplicaciones complejas.",
-                image: "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                color: "from-purple-500 to-indigo-500",
-                features: ["Video de alta calidad", "Múltiples capas", "Menús interactivos", "Subtítulos múltiples"]
-              },
-              {
-                icon: Disc,
-                title: "Blu-ray Disc",
-                capacity: "25 GB - 128 GB",
-                description: "Tecnología óptica de última generación para contenido de alta definición.",
-                image: "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                color: "from-blue-500 to-cyan-500",
-                features: ["Video 4K/8K", "Audio sin compresión", "Contenido interactivo", "Gran capacidad"]
-              }
-            ].map((medium, index) => (
-              <motion.div 
-                key={index} 
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className={`w-12 h-12 bg-gradient-to-r ${medium.color} rounded-lg flex items-center justify-center mb-4`}>
-                  <medium.icon className="h-6 w-6 text-white" />
-                </div>
-                <img
-                  src={medium.image}
-                  alt={medium.title}
-                  className="w-full h-32 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{medium.title}</h3>
-                <div className="bg-gray-100 px-3 py-1 rounded-full text-sm font-medium text-gray-700 mb-3 inline-block">
-                  Capacidad: {medium.capacity}
-                </div>
-                <p className="text-gray-600 mb-4 leading-relaxed">{medium.description}</p>
-                <div className="space-y-1">
-                  {medium.features.map((feature, i) => (
-                    <div key={i} className="flex items-center text-sm text-gray-600">
-                      <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-2"></div>
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Almacenamiento Portátil */}
-      <motion.section 
-        id="almacenamiento-portatil" 
-        className="py-16 px-6 bg-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Almacenamiento Portátil</h2>
-            <p className="text-xl text-gray-600 leading-relaxed">Dispositivos de almacenamiento móvil y extraíble</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Usb,
-                title: "USB Flash Drive",
-                capacity: "1 GB - 1 TB",
-                description: "Dispositivo de almacenamiento portátil más popular y versátil.",
-                image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                color: "from-green-500 to-teal-500",
-                pros: ["Portabilidad extrema", "Plug and play", "Durabilidad", "Precio accesible"],
-                cons: ["Fácil de perder", "Velocidad variable"]
-              },
-              {
-                icon: SdCard,
-                title: "Tarjetas de Memoria",
-                capacity: "1 GB - 1 TB",
-                description: "Almacenamiento compacto para dispositivos móviles y cámaras.",
-                image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                color: "from-orange-500 to-red-500",
-                pros: ["Tamaño mínimo", "Resistente al agua", "Bajo consumo", "Múltiples formatos"],
-                cons: ["Fácil de perder", "Velocidad limitada"]
-              },
-              {
-                icon: Save,
-                title: "Disquete",
-                capacity: "1.44 MB",
-                description: "Medio de almacenamiento magnético histórico, ya obsoleto.",
-                image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                color: "from-gray-500 to-slate-500",
-                pros: ["Histórico", "Económico", "Portátil", "Estándar universal"],
-                cons: ["Capacidad mínima", "Obsoleto", "Frágil"]
-              },
-              {
-                icon: HardDrive,
-                title: "Disco Duro Externo",
-                capacity: "500 GB - 20 TB",
-                description: "Almacenamiento portátil de alta capacidad para respaldos.",
-                image: "https://images.pexels.com/photos/4792728/pexels-photo-4792728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                color: "from-blue-500 to-indigo-500",
-                pros: ["Gran capacidad", "Velocidad alta", "Respaldos completos", "Portabilidad"],
-                cons: ["Tamaño mayor", "Requiere energía"]
-              }
-            ].map((device, index) => (
-              <motion.div 
-                key={index} 
-                className="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className={`w-12 h-12 bg-gradient-to-r ${device.color} rounded-lg flex items-center justify-center mb-4`}>
-                  <device.icon className="h-6 w-6 text-white" />
-                </div>
-                <img
-                  src={device.image}
-                  alt={device.title}
-                  className="w-full h-24 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{device.title}</h3>
-                <div className="bg-white px-3 py-1 rounded-full text-xs font-medium text-gray-700 mb-3 inline-block">
-                  {device.capacity}
-                </div>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">{device.description}</p>
-                
-                <div className="space-y-3">
-                  <div>
-                    <h4 className="text-xs font-semibold text-green-600 mb-1">Ventajas:</h4>
-                    <div className="space-y-1">
-                      {device.pros.slice(0, 2).map((pro, i) => (
-                        <div key={i} className="flex items-center text-xs text-gray-600">
-                          <div className="w-1 h-1 bg-green-500 rounded-full mr-2"></div>
-                          {pro}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-semibold text-red-600 mb-1">Desventajas:</h4>
-                    <div className="space-y-1">
-                      {device.cons.map((con, i) => (
-                        <div key={i} className="flex items-center text-xs text-gray-600">
-                          <div className="w-1 h-1 bg-red-500 rounded-full mr-2"></div>
-                          {con}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Comparación de Tecnologías */}
-          <motion.div 
-            className="mt-16 bg-gradient-to-br from-teal-50 to-cyan-50 p-8 rounded-2xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Evolución del Almacenamiento</h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Cronología Tecnológica:</h4>
-                <div className="space-y-3">
-                  {[
-                    { year: "1970s", tech: "Disquetes", desc: "Primeros medios portátiles" },
-                    { year: "1980s", tech: "Discos Duros", desc: "Almacenamiento permanente" },
-                    { year: "1990s", tech: "CD/DVD", desc: "Era de medios ópticos" },
-                    { year: "2000s", tech: "USB/Flash", desc: "Almacenamiento sólido portátil" },
-                    { year: "2010s", tech: "SSD/Blu-ray", desc: "Alta velocidad y capacidad" }
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center space-x-4">
-                      <div className="w-16 text-sm font-medium text-teal-600">{item.year}</div>
-                      <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                      <div className="flex-1">
-                        <span className="font-medium text-gray-900">{item.tech}</span>
-                        <span className="text-gray-600 ml-2">- {item.desc}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Tendencias Futuras:</h4>
-                <div className="space-y-3 text-gray-700">
-                  <p>• <strong>Almacenamiento en la nube:</strong> Acceso remoto y sincronización</p>
-                  <p>• <strong>NVMe y PCIe 5.0:</strong> Velocidades extremas</p>
-                  <p>• <strong>Almacenamiento cuántico:</strong> Capacidades revolucionarias</p>
-                  <p>• <strong>DNA Storage:</strong> Densidad de datos sin precedentes</p>
-                  <p>• <strong>Holographic Storage:</strong> Almacenamiento tridimensional</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
       {/* video */}
-      <motion.section 
-        className="py-16 px-6 bg-gradient-to-br from-purple-50 to-pink-50"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Video Explicativo</h2>
-          </motion.div>
         <video
           className="w-full max-w-4xl mx-auto rounded-2xl shadow-xl mb-16"
           controls
@@ -1100,8 +626,6 @@ function App() {
           <source src="/videos/nomofobia-compressed.mp4" type="video/mp4" /> 
           Tu navegador no soporta el video.
         </video>
-        </div>
-      </motion.section>
 
       {/* Footer */}
       <motion.footer 
@@ -1114,11 +638,10 @@ function App() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Smartphone className="h-6 w-6" />
-            <HardDrive className="h-6 w-6 ml-2" />
-            <h3 className="text-xl font-semibold">Nomofobia & Almacenamiento</h3>
+            <h3 className="text-xl font-semibold">Nomofobia</h3>
           </div>
           <p className="text-gray-400 mb-6 leading-relaxed">
-            Explorando la tecnología moderna y el almacenamiento de datos
+            Promoviendo un uso consciente y saludable de la tecnología
           </p>
           <div className="flex justify-center space-x-6">
             <button
@@ -1126,19 +649,6 @@ function App() {
               className="text-gray-400 hover:text-white transition-colors"
             >
               Volver al inicio
-            </button>
-            <span className="text-gray-600">|</span>
-            <button
-              onClick={() => scrollToSection('nomofobia')}
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              Nomofobia
-            </button>
-            <button
-              onClick={() => scrollToSection('almacenamiento')}
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              Almacenamiento
             </button>
           </div>
         </div>
