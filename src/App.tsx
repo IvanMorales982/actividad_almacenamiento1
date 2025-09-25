@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Smartphone, AlertTriangle, Heart, Brain, Shield, User, Home, BookOpen, Menu, X, ArrowUp, HardDrive, Disc, Usb, Save, Car as SdCard, Database } from 'lucide-react'mer-motion';
+import { Smartphone, AlertTriangle, Heart, Brain, Shield, User, Home, BookOpen, Menu, X, ArrowUp, HardDrive, Disc, Usb, Save, Car as SdCard, Database } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
