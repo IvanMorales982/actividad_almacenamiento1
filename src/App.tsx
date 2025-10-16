@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Smartphone, AlertTriangle, Heart, Brain, Shield, User, Home, BookOpen, Menu, X, ArrowUp, HardDrive, Disc, Usb, Save, Car as SdCard, Database } from 'lucide-react';
+import { Smartphone, AlertTriangle, Heart, Brain, Shield, User, Home, BookOpen, Menu, X, ArrowUp, HardDrive, Disc, Usb, Save, Car as SdCard, Database, Layout } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['inicio', 'definicion', 'sintomas', 'causas', 'tips', 'experiencia', 'tipos-almacenamiento', 'evolucion', 'comparacion'];
+      const sections = ['inicio', 'definicion', 'sintomas', 'causas', 'tips', 'experiencia', 'tipos-almacenamiento', 'evolucion', 'comparacion', 'herramientas-multimedia'];
       const scrollPosition = window.scrollY + 100;
 
       setShowScrollTop(window.scrollY > 300);
@@ -62,6 +62,7 @@ function App() {
     { id: 'tipos-almacenamiento', label: 'Tipos', icon: HardDrive },
     { id: 'evolucion', label: 'Evolución', icon: Database },
     { id: 'comparacion', label: 'Comparación', icon: Disc },
+    { id: 'herramientas-multimedia', label: 'Multimedia', icon: Layout },
   ];
 
   const currentNavItems = currentMainSection === 'nomofobia' ? nomofobiaNavItems : almacenamientoNavItems;
@@ -1199,7 +1200,7 @@ function App() {
           </motion.section>
           {/* video */}
           <motion.div
-            className="w-full max-w-4xl mx-auto rounded-2xl shadow-xl overflow-hidden"
+            className="w-full max-w-4xl mx-auto rounded-2xl shadow-xl overflow-hidden mb-16 px-6"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -1216,7 +1217,177 @@ function App() {
                 allowFullScreen
               />
             </div>
-        </motion.div>
+          </motion.div>
+
+          {/* Herramientas Multimedia */}
+          <motion.section
+            id="herramientas-multimedia"
+            className="py-16 px-6 bg-gradient-to-br from-indigo-50 to-purple-50"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="max-w-6xl mx-auto">
+              <motion.div
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Herramientas Multimedia</h2>
+                <p className="text-xl text-gray-600 leading-relaxed">Plataformas basadas en tarjetas y páginas interactivas</p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                {[
+                  {
+                    icon: Layout,
+                    title: "Canva",
+                    description: "Herramienta de diseño gráfico con interfaz de tarjetas para crear presentaciones, infografías y contenido visual",
+                    features: ["Plantillas prediseñadas", "Editor drag-and-drop", "Colaboración en tiempo real"],
+                    color: "from-cyan-500 to-blue-500",
+                    image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Notion",
+                    description: "Espacio de trabajo basado en bloques y páginas para organización de contenido multimedia y colaboración",
+                    features: ["Bloques modulares", "Bases de datos", "Integración multimedia"],
+                    color: "from-gray-600 to-slate-600",
+                    image: "https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Trello",
+                    description: "Sistema de gestión visual basado en tarjetas tipo Kanban para organizar proyectos multimedia",
+                    features: ["Tableros visuales", "Tarjetas arrastrables", "Adjuntos multimedia"],
+                    color: "from-blue-600 to-indigo-600",
+                    image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Miro",
+                    description: "Pizarra digital colaborativa con tarjetas interactivas para brainstorming y diseño visual",
+                    features: ["Pizarra infinita", "Colaboración remota", "Plantillas visuales"],
+                    color: "from-yellow-500 to-orange-500",
+                    image: "https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Prezi",
+                    description: "Plataforma de presentaciones con navegación no lineal basada en lienzos y zoom dinámico",
+                    features: ["Presentaciones dinámicas", "Zoom interactivo", "Transiciones suaves"],
+                    color: "from-purple-600 to-pink-600",
+                    image: "https://images.pexels.com/photos/7059/man-working-on-computer.jpg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Padlet",
+                    description: "Muro virtual interactivo con tarjetas multimedia para compartir y colaborar en contenido",
+                    features: ["Muros personalizables", "Contenido multimedia", "Colaboración instantánea"],
+                    color: "from-pink-500 to-rose-500",
+                    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  }
+                ].map((tool, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="h-48 overflow-hidden">
+                      <img
+                        src={tool.image}
+                        alt={tool.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <div className={`w-12 h-12 bg-gradient-to-r ${tool.color} rounded-lg flex items-center justify-center mb-4`}>
+                        <tool.icon className="h-6 w-6 text-white" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-tight">{tool.title}</h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{tool.description}</p>
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-gray-700">Características principales:</h4>
+                        <ul className="space-y-1">
+                          {tool.features.map((feature, i) => (
+                            <li key={i} className="flex items-center text-sm text-gray-600">
+                              <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-2"></div>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div
+                className="bg-white p-8 rounded-2xl shadow-lg mb-12"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center leading-tight">Ventajas de las Herramientas Basadas en Tarjetas</h3>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="text-center p-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Layout className="h-8 w-8 text-white" />
+                    </div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Organización Visual</h4>
+                    <p className="text-gray-600 text-sm">Facilitan la estructuración y visualización de información compleja de manera intuitiva</p>
+                  </div>
+
+                  <div className="text-center p-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <User className="h-8 w-8 text-white" />
+                    </div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Colaboración</h4>
+                    <p className="text-gray-600 text-sm">Permiten trabajo en equipo en tiempo real con múltiples usuarios simultáneamente</p>
+                  </div>
+
+                  <div className="text-center p-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Brain className="h-8 w-8 text-white" />
+                    </div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Flexibilidad</h4>
+                    <p className="text-gray-600 text-sm">Se adaptan a diferentes necesidades: educación, negocios, creatividad y más</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <div className="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-xl mb-8">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Espacio para Video Tutorial</h3>
+                  <p className="text-gray-600 mb-4">Aquí se incluirá un video desde YouTube explicando el uso de estas herramientas multimedia</p>
+                  <div className="bg-white rounded-lg p-8 flex items-center justify-center min-h-[300px]">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Layout className="h-10 w-10 text-white" />
+                      </div>
+                      <p className="text-gray-500 text-lg">Video pendiente de subir</p>
+                      <p className="text-gray-400 text-sm mt-2">URL de YouTube se agregará aquí</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.section>
 
         </>
       )}
