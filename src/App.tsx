@@ -6,7 +6,7 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [currentMainSection, setCurrentMainSection] = useState('nomofobia'); // 'nomofobia' o 'almacenamiento'
+  const [currentMainSection, setCurrentMainSection] = useState('nomofobia'); // 'nomofobia', 'almacenamiento' o 'multimedia'
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -62,10 +62,19 @@ function App() {
     { id: 'tipos-almacenamiento', label: 'Tipos', icon: HardDrive },
     { id: 'evolucion', label: 'Evolución', icon: Database },
     { id: 'comparacion', label: 'Comparación', icon: Disc },
-    { id: 'herramientas-multimedia', label: 'Multimedia', icon: Layout },
   ];
 
-  const currentNavItems = currentMainSection === 'nomofobia' ? nomofobiaNavItems : almacenamientoNavItems;
+  const multimediaNavItems = [
+    { id: 'inicio', label: 'Inicio', icon: Home },
+    { id: 'herramientas-multimedia', label: 'Herramientas', icon: Layout },
+    { id: 'ventajas-multimedia', label: 'Ventajas', icon: Brain },
+  ];
+
+  const currentNavItems = currentMainSection === 'nomofobia'
+    ? nomofobiaNavItems
+    : currentMainSection === 'almacenamiento'
+    ? almacenamientoNavItems
+    : multimediaNavItems;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
@@ -76,11 +85,13 @@ function App() {
             <div className="flex items-center space-x-2">
               {currentMainSection === 'nomofobia' ? (
                 <Smartphone className="h-8 w-8 text-blue-600" />
-              ) : (
+              ) : currentMainSection === 'almacenamiento' ? (
                 <HardDrive className="h-8 w-8 text-purple-600" />
+              ) : (
+                <Layout className="h-8 w-8 text-green-600" />
               )}
               <h1 className="text-2xl font-bold text-gray-900">
-                {currentMainSection === 'nomofobia' ? 'Nomofobia' : 'Almacenamiento'}
+                {currentMainSection === 'nomofobia' ? 'Nomofobia' : currentMainSection === 'almacenamiento' ? 'Almacenamiento' : 'Herramientas Multimedia'}
               </h1>
             </div>
             
@@ -106,14 +117,32 @@ function App() {
               >
                 Almacenamiento
               </button>
+              <button
+                onClick={() => switchMainSection('multimedia')}
+                className={`px-4 py-2 rounded-md transition-all duration-300 ${
+                  currentMainSection === 'multimedia'
+                    ? 'bg-green-600 text-white shadow-sm'
+                    : 'text-gray-600 hover:text-green-600'
+                }`}
+              >
+                Multimedia
+              </button>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-6">
               {currentNavItems.map((item) => {
                 const Icon = item.icon;
-                const colorClass = currentMainSection === 'nomofobia' ? 'text-blue-600 bg-blue-50' : 'text-purple-600 bg-purple-50';
-                const hoverClass = currentMainSection === 'nomofobia' ? 'hover:text-blue-600 hover:bg-blue-50' : 'hover:text-purple-600 hover:bg-purple-50';
+                const colorClass = currentMainSection === 'nomofobia'
+                  ? 'text-blue-600 bg-blue-50'
+                  : currentMainSection === 'almacenamiento'
+                  ? 'text-purple-600 bg-purple-50'
+                  : 'text-green-600 bg-green-50';
+                const hoverClass = currentMainSection === 'nomofobia'
+                  ? 'hover:text-blue-600 hover:bg-blue-50'
+                  : currentMainSection === 'almacenamiento'
+                  ? 'hover:text-purple-600 hover:bg-purple-50'
+                  : 'hover:text-green-600 hover:bg-green-50';
                 
                 return (
                   <button
@@ -152,10 +181,10 @@ function App() {
                 className="md:hidden mt-4 py-4 border-t border-gray-200"
               >
                 {/* Mobile Section Switcher */}
-                <div className="flex bg-gray-100 rounded-lg p-1 mb-4">
+                <div className="grid grid-cols-3 gap-1 bg-gray-100 rounded-lg p-1 mb-4">
                   <button
                     onClick={() => switchMainSection('nomofobia')}
-                    className={`flex-1 px-4 py-2 rounded-md transition-all duration-300 ${
+                    className={`px-3 py-2 rounded-md transition-all duration-300 text-sm ${
                       currentMainSection === 'nomofobia'
                         ? 'bg-blue-600 text-white shadow-sm'
                         : 'text-gray-600 hover:text-blue-600'
@@ -165,7 +194,7 @@ function App() {
                   </button>
                   <button
                     onClick={() => switchMainSection('almacenamiento')}
-                    className={`flex-1 px-4 py-2 rounded-md transition-all duration-300 ${
+                    className={`px-3 py-2 rounded-md transition-all duration-300 text-sm ${
                       currentMainSection === 'almacenamiento'
                         ? 'bg-purple-600 text-white shadow-sm'
                         : 'text-gray-600 hover:text-purple-600'
@@ -173,13 +202,31 @@ function App() {
                   >
                     Almacenamiento
                   </button>
+                  <button
+                    onClick={() => switchMainSection('multimedia')}
+                    className={`px-3 py-2 rounded-md transition-all duration-300 text-sm ${
+                      currentMainSection === 'multimedia'
+                        ? 'bg-green-600 text-white shadow-sm'
+                        : 'text-gray-600 hover:text-green-600'
+                    }`}
+                  >
+                    Multimedia
+                  </button>
                 </div>
                 
                 <div className="flex flex-col space-y-2">
                   {currentNavItems.map((item) => {
                     const Icon = item.icon;
-                    const colorClass = currentMainSection === 'nomofobia' ? 'text-blue-600 bg-blue-50' : 'text-purple-600 bg-purple-50';
-                    const hoverClass = currentMainSection === 'nomofobia' ? 'hover:text-blue-600 hover:bg-blue-50' : 'hover:text-purple-600 hover:bg-purple-50';
+                    const colorClass = currentMainSection === 'nomofobia'
+                      ? 'text-blue-600 bg-blue-50'
+                      : currentMainSection === 'almacenamiento'
+                      ? 'text-purple-600 bg-purple-50'
+                      : 'text-green-600 bg-green-50';
+                    const hoverClass = currentMainSection === 'nomofobia'
+                      ? 'hover:text-blue-600 hover:bg-blue-50'
+                      : currentMainSection === 'almacenamiento'
+                      ? 'hover:text-purple-600 hover:bg-purple-50'
+                      : 'hover:text-green-600 hover:bg-green-50';
                     
                     return (
                       <button
@@ -707,7 +754,7 @@ function App() {
         </div>
       </div>
         </>
-      ) : (
+      ) : currentMainSection === 'almacenamiento' ? (
         <>
           {/* Hero Section - Almacenamiento */}
           <motion.section 
@@ -1218,11 +1265,66 @@ function App() {
               />
             </div>
           </motion.div>
+        </>
+      ) : (
+        <>
+          {/* Hero Section - Herramientas Multimedia */}
+          <motion.section
+            id="inicio"
+            className="pt-24 pb-16 px-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="max-w-6xl mx-auto text-center">
+              <motion.div
+                className="mb-8"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <img
+                  src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Herramientas multimedia"
+                  className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl"
+                />
+              </motion.div>
+              <motion.h1
+                className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">
+                  Herramientas Multimedia
+                </span>
+              </motion.h1>
+              <motion.p
+                className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                Plataformas basadas en tarjetas y páginas interactivas para potenciar tu creatividad
+              </motion.p>
+              <motion.button
+                onClick={() => scrollToSection('herramientas-multimedia')}
+                className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explorar Herramientas
+              </motion.button>
+            </div>
+          </motion.section>
 
           {/* Herramientas Multimedia */}
           <motion.section
             id="herramientas-multimedia"
-            className="py-16 px-6 bg-gradient-to-br from-indigo-50 to-purple-50"
+            className="py-16 px-6 bg-white"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -1236,7 +1338,7 @@ function App() {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Herramientas Multimedia</h2>
+                <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Herramientas Principales</h2>
                 <p className="text-xl text-gray-600 leading-relaxed">Plataformas basadas en tarjetas y páginas interactivas</p>
               </motion.div>
 
@@ -1263,7 +1365,7 @@ function App() {
                     title: "Trello",
                     description: "Sistema de gestión visual basado en tarjetas tipo Kanban para organizar proyectos multimedia",
                     features: ["Tableros visuales", "Tarjetas arrastrables", "Adjuntos multimedia"],
-                    color: "from-blue-600 to-indigo-600",
+                    color: "from-blue-600 to-cyan-600",
                     image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400"
                   },
                   {
@@ -1279,7 +1381,7 @@ function App() {
                     title: "Prezi",
                     description: "Plataforma de presentaciones con navegación no lineal basada en lienzos y zoom dinámico",
                     features: ["Presentaciones dinámicas", "Zoom interactivo", "Transiciones suaves"],
-                    color: "from-purple-600 to-pink-600",
+                    color: "from-green-600 to-teal-600",
                     image: "https://images.pexels.com/photos/7059/man-working-on-computer.jpg?auto=compress&cs=tinysrgb&w=400"
                   },
                   {
@@ -1318,7 +1420,7 @@ function App() {
                         <ul className="space-y-1">
                           {tool.features.map((feature, i) => (
                             <li key={i} className="flex items-center text-sm text-gray-600">
-                              <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-2"></div>
+                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
                               {feature}
                             </li>
                           ))}
@@ -1328,62 +1430,103 @@ function App() {
                   </motion.div>
                 ))}
               </div>
+            </div>
+          </motion.section>
 
+          {/* Ventajas de las Herramientas */}
+          <motion.section
+            id="ventajas-multimedia"
+            className="py-16 px-6 bg-gradient-to-br from-green-50 to-teal-50"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="max-w-6xl mx-auto">
               <motion.div
-                className="bg-white p-8 rounded-2xl shadow-lg mb-12"
+                className="text-center mb-12"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center leading-tight">Ventajas de las Herramientas Basadas en Tarjetas</h3>
-
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center p-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Layout className="h-8 w-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Organización Visual</h4>
-                    <p className="text-gray-600 text-sm">Facilitan la estructuración y visualización de información compleja de manera intuitiva</p>
-                  </div>
-
-                  <div className="text-center p-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <User className="h-8 w-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Colaboración</h4>
-                    <p className="text-gray-600 text-sm">Permiten trabajo en equipo en tiempo real con múltiples usuarios simultáneamente</p>
-                  </div>
-
-                  <div className="text-center p-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Brain className="h-8 w-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Flexibilidad</h4>
-                    <p className="text-gray-600 text-sm">Se adaptan a diferentes necesidades: educación, negocios, creatividad y más</p>
-                  </div>
-                </div>
+                <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Ventajas de las Herramientas Basadas en Tarjetas</h2>
+                <p className="text-xl text-gray-600 leading-relaxed">Beneficios de utilizar plataformas interactivas</p>
               </motion.div>
 
+              <div className="grid md:grid-cols-3 gap-8 mb-12">
+                <motion.div
+                  className="bg-white p-8 rounded-xl shadow-lg text-center"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Layout className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2 text-xl">Organización Visual</h4>
+                  <p className="text-gray-600 leading-relaxed">Facilitan la estructuración y visualización de información compleja de manera intuitiva</p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-white p-8 rounded-xl shadow-lg text-center"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <User className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2 text-xl">Colaboración</h4>
+                  <p className="text-gray-600 leading-relaxed">Permiten trabajo en equipo en tiempo real con múltiples usuarios simultáneamente</p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-white p-8 rounded-xl shadow-lg text-center"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Brain className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2 text-xl">Flexibilidad</h4>
+                  <p className="text-gray-600 leading-relaxed">Se adaptan a diferentes necesidades: educación, negocios, creatividad y más</p>
+                </motion.div>
+              </div>
+
               <motion.div
-                className="text-center"
+                className="bg-white p-8 rounded-2xl shadow-lg"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-xl mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Espacio para Video Tutorial</h3>
-                  <p className="text-gray-600 mb-4">Aquí se incluirá un video desde YouTube explicando el uso de estas herramientas multimedia</p>
-                  <div className="bg-white rounded-lg p-8 flex items-center justify-center min-h-[300px]">
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Layout className="h-10 w-10 text-white" />
-                      </div>
-                      <p className="text-gray-500 text-lg">Video pendiente de subir</p>
-                      <p className="text-gray-400 text-sm mt-2">URL de YouTube se agregará aquí</p>
-                    </div>
-                  </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center leading-tight">Beneficios Adicionales</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    "Interfaz intuitiva y fácil de usar",
+                    "Acceso desde cualquier dispositivo",
+                    "Integraciones con otras herramientas",
+                    "Plantillas prediseñadas profesionales",
+                    "Actualizaciones en tiempo real",
+                    "Historial de versiones y cambios"
+                  ].map((benefit, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-start space-x-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed">{benefit}</p>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             </div>
@@ -1425,17 +1568,21 @@ function App() {
           <div className="flex items-center justify-center space-x-2 mb-4">
             {currentMainSection === 'nomofobia' ? (
               <Smartphone className="h-6 w-6" />
-            ) : (
+            ) : currentMainSection === 'almacenamiento' ? (
               <HardDrive className="h-6 w-6" />
+            ) : (
+              <Layout className="h-6 w-6" />
             )}
             <h3 className="text-xl font-semibold">
-              {currentMainSection === 'nomofobia' ? 'Nomofobia' : 'Almacenamiento Digital'}
+              {currentMainSection === 'nomofobia' ? 'Nomofobia' : currentMainSection === 'almacenamiento' ? 'Almacenamiento Digital' : 'Herramientas Multimedia'}
             </h3>
           </div>
           <p className="text-gray-400 mb-6 leading-relaxed">
-            {currentMainSection === 'nomofobia' 
+            {currentMainSection === 'nomofobia'
               ? 'Promoviendo un uso consciente y saludable de la tecnología'
-              : 'Explorando la evolución del almacenamiento de datos'
+              : currentMainSection === 'almacenamiento'
+              ? 'Explorando la evolución del almacenamiento de datos'
+              : 'Plataformas interactivas para potenciar tu creatividad'
             }
           </p>
           <div className="flex justify-center space-x-6">
@@ -1455,9 +1602,11 @@ function App() {
           <motion.button
             onClick={scrollToTop}
             className={`fixed bottom-8 right-8 ${
-              currentMainSection === 'nomofobia' 
-                ? 'bg-gradient-to-r from-blue-600 to-teal-600' 
-                : 'bg-gradient-to-r from-purple-600 to-indigo-600'
+              currentMainSection === 'nomofobia'
+                ? 'bg-gradient-to-r from-blue-600 to-teal-600'
+                : currentMainSection === 'almacenamiento'
+                ? 'bg-gradient-to-r from-purple-600 to-indigo-600'
+                : 'bg-gradient-to-r from-green-600 to-teal-600'
             } text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-40`}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
