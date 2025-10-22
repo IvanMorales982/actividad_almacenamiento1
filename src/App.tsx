@@ -752,7 +752,7 @@ function App() {
             allowFullScreen
           ></iframe>
         </div>
-      </div>
+      </div>
         </>
       ) : currentMainSection === 'almacenamiento' ? (
         <>
@@ -1268,162 +1268,63 @@ function App() {
         </>
       ) : (
         <>
-          {/* Definiciones - Herramientas Multimedia */}
+          {/* Hero Section - Herramientas Multimedia */}
           <motion.section
-            id="definicion-multimedia"
-            className="py-16 px-6 bg-white"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            id="inicio"
+            className="pt-24 pb-16 px-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto text-center">
               <motion.div
-                className="text-center mb-12"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                className="mb-8"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">¿Qué son las Herramientas Multimedia?</h2>
-                <p className="text-xl text-gray-600 leading-relaxed">Entendiendo las plataformas digitales interactivas</p>
+                <img
+                  src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt="Herramientas multimedia"
+                  className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl"
+                />
               </motion.div>
-
-              <div className="grid md:grid-cols-2 gap-12 mb-12">
-                <motion.div
-                  className="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl"
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-2xl font-bold text-green-900 mb-6 flex items-center leading-tight">
-                    <Layout className="h-6 w-6 mr-2" />
-                    Herramientas Multimedia
-                  </h3>
-                  <div className="space-y-4 text-gray-700 leading-relaxed">
-                    <p>
-                      Las <strong>herramientas multimedia</strong> son plataformas digitales que permiten crear, 
-                      editar, organizar y compartir contenido que combina diferentes tipos de medios: texto, 
-                      imágenes, audio, video y elementos interactivos.
-                    </p>
-                    <p>
-                      Estas herramientas facilitan la comunicación visual y la colaboración, permitiendo a 
-                      usuarios de diferentes niveles técnicos crear contenido profesional de manera intuitiva 
-                      y efectiva.
-                    </p>
-                    <div className="bg-white p-4 rounded-xl mt-4">
-                      <h4 className="font-semibold text-green-800 mb-3">Características principales:</h4>
-                      <ul className="space-y-2">
-                        {[
-                          "Interfaz visual e intuitiva",
-                          "Integración de múltiples medios",
-                          "Colaboración en tiempo real",
-                          "Acceso multiplataforma",
-                          "Plantillas prediseñadas"
-                        ].map((item, i) => (
-                          <li key={i} className="flex items-start">
-                            <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl"
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-2xl font-bold text-blue-900 mb-6 flex items-center leading-tight">
-                    <Brain className="h-6 w-6 mr-2" />
-                    Herramientas Basadas en Tarjetas
-                  </h3>
-                  <div className="space-y-4 text-gray-700 leading-relaxed">
-                    <p>
-                      Las <strong>herramientas basadas en tarjetas</strong> utilizan un sistema de organización 
-                      modular donde la información se presenta en bloques o tarjetas individuales que pueden 
-                      ser movidas, organizadas y conectadas libremente.
-                    </p>
-                    <p>
-                      Este enfoque visual imita el proceso de pensamiento humano y facilita la organización 
-                      de ideas, proyectos y contenido de manera flexible y dinámica.
-                    </p>
-                    <div className="bg-white p-4 rounded-xl mt-4">
-                      <h4 className="font-semibold text-blue-800 mb-3">Ventajas del sistema de tarjetas:</h4>
-                      <ul className="space-y-2">
-                        {[
-                          "Organización visual clara",
-                          "Flexibilidad para reorganizar",
-                          "Fácil priorización de tareas",
-                          "Vista general del proyecto",
-                          "Arrastrar y soltar intuitivo"
-                        ].map((item, i) => (
-                          <li key={i} className="flex items-start">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3"></div>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-
-              <motion.div
-                className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl"
+              <motion.h1
+                className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
               >
-                <h3 className="text-2xl font-bold text-purple-900 mb-6 text-center leading-tight">
-                  ¿Por qué usar herramientas basadas en tarjetas?
-                </h3>
-                <div className="grid md:grid-cols-3 gap-6 text-gray-700">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <User className="h-8 w-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-purple-900 mb-2">Colaboración</h4>
-                    <p className="text-sm leading-relaxed">
-                      Facilitan el trabajo en equipo permitiendo que múltiples personas contribuyan 
-                      simultáneamente de forma organizada
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Brain className="h-8 w-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-blue-900 mb-2">Productividad</h4>
-                    <p className="text-sm leading-relaxed">
-                      Aumentan la eficiencia al proporcionar una vista clara del progreso y 
-                      permitir cambios rápidos en la organización
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Layout className="h-8 w-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-green-900 mb-2">Creatividad</h4>
-                    <p className="text-sm leading-relaxed">
-                      Liberan el pensamiento creativo al permitir experimentar con diferentes 
-                      estructuras y conexiones entre ideas
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+                <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">
+                  Herramientas Multimedia
+                </span>
+              </motion.h1>
+              <motion.p
+                className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                Plataformas basadas en tarjetas y páginas interactivas para potenciar tu creatividad
+              </motion.p>
+              <motion.button
+                onClick={() => scrollToSection('herramientas-multimedia')}
+                className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explorar Herramientas
+              </motion.button>
             </div>
           </motion.section>
 
           {/* Herramientas Multimedia */}
           <motion.section
             id="herramientas-multimedia"
-            className="py-16 px-6 bg-gradient-to-br from-gray-50 to-green-50"
+            className="py-16 px-6 bg-white"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -1440,6 +1341,219 @@ function App() {
                 <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Herramientas Principales</h2>
                 <p className="text-xl text-gray-600 leading-relaxed">Plataformas basadas en tarjetas y páginas interactivas</p>
               </motion.div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                {[
+                  {
+                    icon: Layout,
+                    title: "Canva",
+                    description: "Herramienta de diseño gráfico con interfaz de tarjetas para crear presentaciones, infografías y contenido visual",
+                    features: ["Plantillas prediseñadas", "Editor drag-and-drop", "Colaboración en tiempo real"],
+                    color: "from-cyan-500 to-blue-500",
+                    image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Notion",
+                    description: "Espacio de trabajo basado en bloques y páginas para organización de contenido multimedia y colaboración",
+                    features: ["Bloques modulares", "Bases de datos", "Integración multimedia"],
+                    color: "from-gray-600 to-slate-600",
+                    image: "https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Trello",
+                    description: "Sistema de gestión visual basado en tarjetas tipo Kanban para organizar proyectos multimedia",
+                    features: ["Tableros visuales", "Tarjetas arrastrables", "Adjuntos multimedia"],
+                    color: "from-blue-600 to-cyan-600",
+                    image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Miro",
+                    description: "Pizarra digital colaborativa con tarjetas interactivas para brainstorming y diseño visual",
+                    features: ["Pizarra infinita", "Colaboración remota", "Plantillas visuales"],
+                    color: "from-yellow-500 to-orange-500",
+                    image: "https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Prezi",
+                    description: "Plataforma de presentaciones con navegación no lineal basada en lienzos y zoom dinámico",
+                    features: ["Presentaciones dinámicas", "Zoom interactivo", "Transiciones suaves"],
+                    color: "from-green-600 to-teal-600",
+                    image: "https://images.pexels.com/photos/7059/man-working-on-computer.jpg?auto=compress&cs=tinysrgb&w=400"
+                  },
+                  {
+                    icon: Layout,
+                    title: "Padlet",
+                    description: "Muro virtual interactivo con tarjetas multimedia para compartir y colaborar en contenido",
+                    features: ["Muros personalizables", "Contenido multimedia", "Colaboración instantánea"],
+                    color: "from-pink-500 to-rose-500",
+                    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  }
+                ].map((tool, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="h-48 overflow-hidden">
+                      <img
+                        src={tool.image}
+                        alt={tool.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <div className={`w-12 h-12 bg-gradient-to-r ${tool.color} rounded-lg flex items-center justify-center mb-4`}>
+                        <tool.icon className="h-6 w-6 text-white" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-tight">{tool.title}</h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{tool.description}</p>
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-gray-700">Características principales:</h4>
+                        <ul className="space-y-1">
+                          {tool.features.map((feature, i) => (
+                            <li key={i} className="flex items-center text-sm text-gray-600">
+                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.section>
+
+          {/* Ventajas de las Herramientas */}
+          <motion.section
+            id="ventajas-multimedia"
+            className="py-16 px-6 bg-gradient-to-br from-green-50 to-teal-50"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="max-w-6xl mx-auto">
+              <motion.div
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">Ventajas de las Herramientas Basadas en Tarjetas</h2>
+                <p className="text-xl text-gray-600 leading-relaxed">Beneficios de utilizar plataformas interactivas</p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-3 gap-8 mb-12">
+                <motion.div
+                  className="bg-white p-8 rounded-xl shadow-lg text-center"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Layout className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2 text-xl">Organización Visual</h4>
+                  <p className="text-gray-600 leading-relaxed">Facilitan la estructuración y visualización de información compleja de manera intuitiva</p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-white p-8 rounded-xl shadow-lg text-center"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <User className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2 text-xl">Colaboración</h4>
+                  <p className="text-gray-600 leading-relaxed">Permiten trabajo en equipo en tiempo real con múltiples usuarios simultáneamente</p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-white p-8 rounded-xl shadow-lg text-center"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Brain className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2 text-xl">Flexibilidad</h4>
+                  <p className="text-gray-600 leading-relaxed">Se adaptan a diferentes necesidades: educación, negocios, creatividad y más</p>
+                </motion.div>
+              </div>
+
+              <motion.div
+                className="bg-white p-8 rounded-2xl shadow-lg"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center leading-tight">Beneficios Adicionales</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    "Interfaz intuitiva y fácil de usar",
+                    "Acceso desde cualquier dispositivo",
+                    "Integraciones con otras herramientas",
+                    "Plantillas prediseñadas profesionales",
+                    "Actualizaciones en tiempo real",
+                    "Historial de versiones y cambios"
+                  ].map((benefit, index) => (
+                    <motion.div
+                      key={index}
+                      className="flex items-start space-x-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                      <p className="text-gray-700 leading-relaxed">{benefit}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </motion.section>
+
+        </>
+      )}
+
+      <motion.section
+        className="py-16 px-6 bg-gradient-to-br from-gray-50 to-blue-50"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.h2
+            className="text-4xl font-bold text-gray-900 mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            
+          </motion.h2>
+          
+        </div>
+      </motion.section>
 
 
       {/* Footer */}
