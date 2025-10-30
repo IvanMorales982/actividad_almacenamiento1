@@ -1683,73 +1683,28 @@ function App() {
             </div>
           </motion.section>
 
-        </>
-      )}
-
-      <motion.section
-        className="py-16 px-6 bg-gradient-to-br from-gray-50 to-blue-50"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.h2
-            className="text-4xl font-bold text-gray-900 mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            
-          </motion.h2>
-          
-        </div>
-
-     {/* Video Section - Multimedia */}
-          <motion.section
-            className="py-16 px-6 bg-white"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+          {/* video */}
+          <motion.div
+            className="w-full max-w-4xl mx-auto rounded-2xl shadow-xl overflow-hidden mb-16 px-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="max-w-4xl mx-auto">
-              <motion.div
-                className="text-center mb-8"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                  Video Explicativo
-                </h2>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Aprende más sobre herramientas multimedia
-                </p>
-              </motion.div>
-              
-              <motion.div
-                className="rounded-2xl shadow-xl overflow-hidden"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className="relative pb-[56.25%] h-0">
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full"
-                    src="https://www.youtube.com/embed/cyF7-wlybQs"
-                    title="Video sobre Herramientas Multimedia"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-              </motion.div>
+            <div className="relative pb-[56.25%] h-0">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/cyF7-wlybQs"
+                title="Video sobre Herramientas Multimedia"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
             </div>
-          </motion.section>
+          </motion.div>
+        </>
+      )}
 
 
       {/* Footer */}
