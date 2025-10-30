@@ -1704,6 +1704,29 @@ function App() {
           </motion.h2>
           
         </div>
+
+       </motion.section>
+          {/* video */}
+          <motion.div
+            className="w-full max-w-4xl mx-auto rounded-2xl shadow-xl overflow-hidden mb-16 px-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative pb-[56.25%] h-0">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/watch?v=cyF7-wlybQs"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </motion.div>
+        
       </motion.section>
 
 
