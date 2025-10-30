@@ -1717,7 +1717,7 @@ function App() {
             <div className="relative pb-[56.25%] h-0">
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/watch?v=cyF7-wlybQs"
+                src="https://www.youtube.com/embed/cyF7-wlybQs"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
